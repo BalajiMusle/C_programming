@@ -1553,7 +1553,7 @@ int main()
     return 0;
 }
 */
-//######################################### End ##################################################
+//################# INBUILT TYPECAST FUNCTIONS IN C End #######################
 
 //##### Num Palindrom #####
 /*
@@ -1698,3 +1698,292 @@ int main()
 	return 0;
 }
 */
+
+//############################### Bitwise_Operations_and_Tricks ################################
+
+//##### Set nth bit of integer x #####
+/*
+
+int main() 
+{
+	int x = 10; //1010
+	int n = 2;
+	int result = x | (1 << n);  //1110			// Logic: x | (1<<n)
+	printf("%d\n", result); //14	
+	return 0;
+}
+*/
+
+//##### Clear nth bit of integer x #####
+/*
+
+int main() 
+{
+	int x = 10; //1010
+	int n = 1;
+	int result = x & ~(1 << n); //1000			// Logic: x & ~(1<<n)
+	printf("%d", result2); 	//8
+	return 0;
+}
+*/
+
+//##### Toggle nth bit of x #####
+/*
+
+int main() 
+{
+	int x = 10; //1010
+	int n = 0;
+	int result = x ^ (1 << n); //1011
+	n = 3;
+	result = result ^ (1<<n); //0011			// Logic: x ^ (1<<n)
+	printf("%d\n", result); //3
+	return 0;
+}
+*/
+
+//##### Multiply integer x by the nth power of 2 #####
+/*
+
+int main() 
+{
+	int x = 10;
+	int n = 3;
+	int result = x << n;  // 10 * (2^3)			// Logic: x << n
+	printf("%d\n", result); //80
+	return 0;
+}
+*/
+
+//##### Divide integer x by the nth power of 2 #####
+/*
+
+int main() 
+{
+	int x = 80;
+	int n = 3;
+	int result = x >> n;  // 80 / (2^3)			// Logic: x >> n;
+	printf("%d\n", result); //10
+	return 0;
+}
+*/
+
+//##### Check equality of two integer #####
+/*
+
+int main() 
+{
+	int num1 = 10;
+	int num2 = 10;
+	if ((num1 ^ num2) == 0) 			// Logic: (num1 ^ num2) == 0; // num1 == num2
+		printf("Equal");
+	else
+		printf("Not Equal");
+	return 0;
+}
+*/
+
+//##### Check if an integer number is odd #####
+/*
+
+int main() 
+{
+	int num = 13;
+	if ((num & 1) == 1) 			// Logic: (num & 1) == 1
+		printf("Odd");
+	else
+		printf("Even");
+	return 0;
+}
+*/
+
+//##### Get the max of two integer values #####
+/*
+
+int main() 
+{
+	int a = 5;
+	int b = 7;
+	
+	int max = b & ((a-b) >> 31) | a & (~(a-b) >> 31); 		// Logic: b & ((a-b) >> 31) | a & (~(a-b) >> 31);
+	printf("%d", max);
+	
+	return 0;
+}
+*/
+
+//##### Get the min of two integer values #####
+/*
+
+int main() 
+{
+	int a = 5;
+	int b = 7;
+	
+	int min = a & ((a-b) >> 31) | b & (~(a-b) >> 31);	// Logic: a & ((a-b) >> 31) | b & (~(a-b) >> 31);
+	printf("%d", min);
+	
+	return 0;
+}
+*/
+
+//##### Check whether both integer numbers have the same sign #####
+/*
+
+int main() 
+{
+	int num1 = 5;
+	int num2 = -7;
+	
+	if ((num1 ^ num2) >= 0)		// Logic: (num1 ^ num2) >= 0;
+		printf("Same Sign");
+	else
+		printf("Different Sign");
+
+	return 0;
+}
+*/
+
+//##### Flip the sign of an integer number #####
+/*
+
+int main() 
+{
+	int num = 5;
+	
+	num = ~num + 1;				// Logic: num = ~num + 1;
+	printf("num = %d", num);
+
+	return 0;
+}
+*/
+
+//##### Check whether a integer number is power of 2 #####
+/*
+
+int main() 
+{
+	int num = 16;
+	
+	if (num > 0 && (num & (num - 1)) == 0)		// Logic: num > 0 && (num & (num - 1)) == 0;
+		printf("Number is power of 2");
+	else
+		printf("Number is not power of 2");
+	return 0;
+}
+*/
+
+//##### Increment by 1 (num + 1) #####
+/*
+
+int main() 
+{
+	int num = 16;
+	
+	num = -~num;				// Logic: -~num
+	printf("num = %d", num);
+	
+	return 0;
+}
+*/
+
+//##### Decrement by 1 (num - 1) #####
+/*
+
+int main() 
+{
+	int num = 16;
+	
+	num = ~-num;				// Logic: ~-num
+	printf("num = %d", num);
+	
+	return 0;
+}
+*/
+//#################### Bitwise_Operations_and_Tricks End #########################
+
+//##### Checking Endianness of system #####
+/*
+
+int main() 
+{
+   unsigned int i = 1;
+   char *c = (char*)&i;
+   if (*c)    
+       printf("Little endian");
+   else
+       printf("Big endian");
+   getchar();
+   return 0;
+}
+
+  // In the above program, a character pointer c is pointing to an integer i. 
+  // Since size of character is 1 byte when the character pointer is de-referenced
+  // it will contain only first byte of integer. If machine is little endian then *c
+  // will be 1 (because last byte is stored first) and if machine is big endian then *c will be 0.
+*/
+
+//#################### Implementation of strtok #########################
+/*
+char * strtok(char * str, char *delimit);
+void main()
+{
+	char str[100], *ptr, delimit[20];
+	int i=0, len=0;
+	
+	printf("Enter the input string \n");
+	gets(str);  
+	printf("Enter the delimiter string \n");
+	gets(delimit);
+
+	ptr = strtok(str, delimit);	
+	while(ptr != NULL)
+	{
+		printf("%s \n", ptr);
+		ptr = strtok(NULL, delimit);		
+	}
+}
+char * strtok(char * str, char *delimit)
+{
+	static int position;
+	static char *pstr;	
+	int i = 0, start = position, j;
+	
+	if(str != NULL) 	// Copying the string for further calls of strtok
+		pstr = str;
+	
+	while(pstr[position] != '\0') 	//While not end of string
+	{
+		j = 0;	
+	
+		while(delimit[j] != '\0') 	//Comparing of one of the delimiter matches the character in the string
+		{		
+			if(pstr[position] == delimit[j]) //Pos point to the next location in the string that we have to read
+			{
+				pstr[position] = '\0';	//Replace the delimter by \0 to break the string
+				position = position + 1;				
+										//Checking for the case where there is no relevant string before the delimeter.
+				if(pstr[start] != '\0') 	//start specifies the location from where we have to start reading the next character
+				{
+					return (&pstr[start]); //return string upto first occurence of delimiter -----> 1
+				}
+				else
+				{
+					start = position; // Move to the next string after the delimiter
+					position--; // Decrementing as it will be incremented at the end of the while loop
+					break;
+				}
+			}
+			j++;
+		}
+		position++;		
+	}//End of Outer while
+	
+	pstr[position] = '\0';
+	if(pstr[start] == '\0')
+		return NULL;
+	else
+		return &pstr[start]; // string after delimiter is return fromm here ----> 2
+}
+*/
+/**************************************** End_Of_File *****************************************/
