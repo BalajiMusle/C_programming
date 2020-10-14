@@ -508,7 +508,8 @@ int main()
 }
 */
 
-//##### multiply two numbers without using " *" operator #####
+//##### multiply two numbers without using " *
+" operator #####
 /*
 
 int main()
@@ -1700,7 +1701,23 @@ int main()
 */
 
 //############################### Bitwise_Operations_and_Tricks ################################
+//##### To get the most-significant bits (MSB) of an integer value #####
+/*
+     public static int GetMSB(int intValue)
+     {
+	return (intValue & 0xFFFF0000);
+     }
+*/
+	
+//##### To get the least-significant bits (LSB) of a value #####
+/*	
+	public static int GetLSB(int intValue)
+	{
+	    return (intValue & 0x0000FFFF);
+	}
 
+*/
+	
 //##### Set nth bit of integer x #####
 /*
 
